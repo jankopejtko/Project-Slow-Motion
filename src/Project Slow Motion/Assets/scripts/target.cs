@@ -12,10 +12,6 @@ public class target : MonoBehaviour
         if (other.tag == tag)
         {
             entity.Health = entity.Health - other.gameObject.GetComponent<bullet>().force;
-            if(entity.Health <= 0) 
-            {
-                Destroy(gameObject);
-            }
             Destroy(other.gameObject);
         }
     }

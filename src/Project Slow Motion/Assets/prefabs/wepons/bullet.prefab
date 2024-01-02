@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4874739892584486345}
   - component: {fileID: 2167405639963838461}
   - component: {fileID: 4690650188059709001}
-  - component: {fileID: 5701539661456277740}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -84,27 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &5701539661456277740
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1426267867964379879}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5513482629146946627
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,7 +94,7 @@ GameObject:
   - component: {fileID: 1442511594559021482}
   - component: {fileID: 3953724057232061119}
   - component: {fileID: 1840260232954967349}
-  - component: {fileID: 389865647548538852}
+  - component: {fileID: 6670451491859088980}
   m_Layer: 0
   m_Name: bullet
   m_TagString: bullet
@@ -182,8 +160,8 @@ MonoBehaviour:
   self: {fileID: 5513482629146946627}
   TTL: 5
   force: 20
---- !u!135 &389865647548538852
-SphereCollider:
+--- !u!65 &6670451491859088980
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -201,5 +179,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.005
+  m_Size: {x: 0.01, y: 0.01, z: 0.01}
   m_Center: {x: 0, y: 0, z: 0}

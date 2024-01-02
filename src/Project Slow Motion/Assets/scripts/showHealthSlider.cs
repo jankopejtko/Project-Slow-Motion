@@ -9,7 +9,7 @@ public class showHealthSlider : MonoBehaviour
     [SerializeField] Slider healthBar;
     void Update()
     {
-        Debug.Log(entity.Health / entity.MaxHealth);
+        //Debug.Log(entity.Health / entity.MaxHealth);
         healthBar.value = (entity.Health / entity.MaxHealth);
     }
 }
