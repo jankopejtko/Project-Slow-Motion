@@ -15,6 +15,7 @@ public class NPCBehavior : MonoBehaviour
     [SerializeField] private entityStats enemyStats;
     [SerializeField] private GameObject healthBar;
     [SerializeField] private NavMeshAgent navMeshAgent;
+    public bool enableSmoothBrainNav = true;
     public GameObject enemy;
 
     private Transform playerTransform;
@@ -25,6 +26,10 @@ public class NPCBehavior : MonoBehaviour
         lastShootTime = -shootingCooldown;
         navMeshAgent.angularSpeed = 360f;
         navMeshAgent.updateRotation = true;
+
+        //modify values
+        navMeshAgent.speed *= Random.Range(0.75f, 1.25f);
+        shootingDistance = shootingDistance + Random.Range(-2, 2);
     }
 
     void Update()
@@ -37,32 +42,66 @@ public class NPCBehavior : MonoBehaviour
             Destroy(enemy, 10f);
             return;
         }
+        else 
+        {
+            Vector3 directionToPlayer = playerTransform.position - transform.position;
+            float distanceToPlayer = directionToPlayer.magnitude;
+            //show ray in scene for debug
+            Debug.DrawRay(transform.position, directionToPlayer * distanceToPlayer, Color.red);
+            if (Physics.Raycast(transform.position, directionToPlayer, out _, distanceToPlayer, obstacleMask))
+            {
+                SetAnimatorState(true, false, false);
+                navMeshAgent.isStopped = true;
+                return;
+            }
+            else 
+            {
+                if (distanceToPlayer > ignoringDistance)
+                {
+                    SetAnimatorState(true, false, false);
+                    navMeshAgent.isStopped = true;
+                    Debug.Log("player is ignored");
+                }
+                else if (distanceToPlayer > shootingDistance)
+                {
+                    SetAnimatorState(false, false, true);
+                    navMeshAgent.isStopped = false;
+                    if(NavMesh.SamplePosition(playerTransform.position, out _, 1.0f, NavMesh.AllAreas)) 
+                    {
+                        navMeshAgent.SetDestination(playerTransform.position);
+                        Debug.Log("nav agent in use");
+                    }
+                    else if(enableSmoothBrainNav)
+                    {
+                        lookAtPlayer();
+                        transform.Translate(directionToPlayer.normalized * navMeshAgent.speed * Time.deltaTime, Space.World);
+                        Debug.Log("switching to smooth brain");
+                    }
+                }
+                else
+                {
+                    lookAtPlayer();
+                    if (Time.time > lastShootTime + shootingCooldown)
+                    {
+                        SetAnimatorState(false, true, false);
+                        navMeshAgent.isStopped = true;
+                        Shoot();
+                        lastShootTime = Time.time;
+                        Debug.Log("enemy is shooting at player");
+                    }
+                }
+            }
 
-        Vector3 directionToPlayer = playerTransform.position - transform.position;
-        float distanceToPlayer = directionToPlayer.magnitude;
-
-        if (Physics.Raycast(transform.position, directionToPlayer, out _, viewDistance, obstacleMask))
-        {
-            SetAnimatorState(true, false, false);
-            return;
         }
 
-        if (distanceToPlayer > ignoringDistance)
-        {
-            SetAnimatorState(true, false, false);
-        }
-        else if (distanceToPlayer > shootingDistance)
-        {
-            SetAnimatorState(false, false, true);
-            navMeshAgent.SetDestination(playerTransform.position);
-        }
-        else if (Time.time > lastShootTime + shootingCooldown)
-        {
-            navMeshAgent.isStopped = true;
-            SetAnimatorState(false, true, false);
-            Shoot();
-            lastShootTime = Time.time;
-        }
+    }
+
+    private void lookAtPlayer()
+    {
+        //npc look at player
+        Vector3 lookAtPosition = playerTransform.position;
+        lookAtPosition.y = transform.position.y;
+        transform.LookAt(lookAtPosition);
     }
 
     void SetAnimatorState(bool isIdle, bool isShooting, bool isWalking)
