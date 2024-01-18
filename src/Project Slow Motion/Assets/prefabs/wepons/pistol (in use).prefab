@@ -59,7 +59,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1527082362671622633}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.56429505, y: 0.46872464, z: 0.5044196, w: 0.45544395}
+  m_LocalRotation: {x: 0.5642972, y: 0.4687264, z: 0.50441664, w: 0.45544273}
   m_LocalPosition: {x: -28.6702, y: 0.8607, z: -17.4508}
   m_LocalScale: {x: 0.39429042, y: 0.39429048, z: 0.39429042}
   m_ConstrainProportionsScale: 0
@@ -414,7 +414,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 46df32d95ff78b343a4d9fa4f56043f9,
         type: 3}
       propertyPath: m_Name
-      value: Pistol
+      value: Pistol - model
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -440,20 +440,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: laser burst
       objectReference: {fileID: 0}
+    - target: {fileID: 514807514869948265, guid: 2489c16b1ef54e641a4bfa1545a8ca75,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 757279482890807863, guid: 2489c16b1ef54e641a4bfa1545a8ca75,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.191
+      value: 0.192
       objectReference: {fileID: 0}
     - target: {fileID: 757279482890807863, guid: 2489c16b1ef54e641a4bfa1545a8ca75,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 757279482890807863, guid: 2489c16b1ef54e641a4bfa1545a8ca75,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.498
+      value: 0.516
       objectReference: {fileID: 0}
     - target: {fileID: 757279482890807863, guid: 2489c16b1ef54e641a4bfa1545a8ca75,
         type: 3}
@@ -490,6 +495,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4606597938153872946, guid: 2489c16b1ef54e641a4bfa1545a8ca75,
+        type: 3}
+      propertyPath: ShapeModule.arc.mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4606597938153872946, guid: 2489c16b1ef54e641a4bfa1545a8ca75,
+        type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4606597938153872946, guid: 2489c16b1ef54e641a4bfa1545a8ca75,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.007
+      objectReference: {fileID: 0}
+    - target: {fileID: 4606597938153872946, guid: 2489c16b1ef54e641a4bfa1545a8ca75,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0.11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -519,6 +544,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: smoke
+      objectReference: {fileID: 0}
+    - target: {fileID: 4107331669238353756, guid: fefd00a4c636762499c4407894fb2c6f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7565332667035088198, guid: fefd00a4c636762499c4407894fb2c6f,
         type: 3}

@@ -8,6 +8,8 @@ TagManager:
   - gun
   - bullet
   - player
+  - NPC
+  - NPCshootTarget
   layers:
   - Default
   - TransparentFX

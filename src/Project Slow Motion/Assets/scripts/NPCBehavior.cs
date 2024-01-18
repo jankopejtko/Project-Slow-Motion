@@ -17,27 +17,31 @@ public class NPCBehavior : MonoBehaviour
     [SerializeField] private NavMeshAgent navMeshAgent;
     public bool enableSmoothBrainNav = true;
     public GameObject enemy;
+    public GameObject hitbox;
 
     private Transform playerTransform;
 
     void Start()
     {
-        playerTransform = GameObject.FindGameObjectWithTag("player").transform;
+        playerTransform = GameObject.FindGameObjectWithTag("NPCshootTarget").transform;
         lastShootTime = -shootingCooldown;
         navMeshAgent.angularSpeed = 360f;
         navMeshAgent.updateRotation = true;
 
         //modify values
         navMeshAgent.speed *= Random.Range(0.75f, 1.25f);
-        shootingDistance = shootingDistance + Random.Range(-2, 2);
+        shootingDistance = shootingDistance + Random.Range(-2, 4);
     }
 
     void Update()
     {
         if (enemyStats.Health <= 0)
         {
+            this.GetComponent<Rigidbody>().useGravity = false;
             this.GetComponent<Rigidbody>().isKinematic = true;
             anim.enabled = false;
+            Destroy(hitbox);
+            Destroy(navMeshAgent);
             Destroy(healthBar);
             Destroy(enemy, 10f);
             return;
