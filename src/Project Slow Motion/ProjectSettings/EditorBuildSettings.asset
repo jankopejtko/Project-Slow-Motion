@@ -9,14 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
+    path: Assets/Scenes/menu/menu.unity
+    guid: da10317737bee4a4b8d23d4e2a7f265d
+  - enabled: 1
     path: Assets/plugin/SFLCK_2/Scenes/Demo_1.unity
     guid: 64025cce2a62de74dba5c8c60207e56c
   - enabled: 1
     path: Assets/Scenes/endless.unity
     guid: f8109351cc4cf5e4bb02fbb07e13466f
-  - enabled: 1
-    path: Assets/Scenes/menu/menu.unity
-    guid: da10317737bee4a4b8d23d4e2a7f265d
   - enabled: 1
     path: Assets/Scenes/menu/settings.unity
     guid: 4b35131ddab8616439fa40758c45ce35
