@@ -15,6 +15,7 @@ public class slowTime : MonoBehaviour
     bool SlowSpeedEnabled = false;
     [SerializeField] float minSpeed;
     private List<GameObject> gunList = new List<GameObject>();
+    [SerializeField] AudioSource audio;
 
     private void Start()
     {
@@ -40,6 +41,7 @@ public class slowTime : MonoBehaviour
             if (timeScale < minSpeed)
             {
                 timeScale = minSpeed;
+                audio.Play();
             }
             if (timeScale >= 1)
             {

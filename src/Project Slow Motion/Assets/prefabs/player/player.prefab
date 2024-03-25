@@ -1431,7 +1431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b01a7ee54ecd414b97b2b30bb06671e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 20
   kill: 0
 --- !u!1 &6561668794420944365
 GameObject:
@@ -1601,6 +1601,7 @@ MonoBehaviour:
   turnProvider: {fileID: 6202958187085446145}
   playerCh: {fileID: 4831430382336616457}
   minSpeed: 0.05
+  audio: {fileID: 0}
 --- !u!1 &7131748854532020586
 GameObject:
   m_ObjectHideFlags: 0

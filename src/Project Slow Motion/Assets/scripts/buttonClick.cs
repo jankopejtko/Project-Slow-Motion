@@ -13,4 +13,8 @@ public class buttonClick : MonoBehaviour
         }
         SceneManager.LoadScene(name);
     }
+    public void LoadURL(string url) 
+    {
+        Application.OpenURL(url);
+    }
 }

@@ -21,6 +21,10 @@ public class NPCBehavior : MonoBehaviour
 
     private Transform playerTransform;
 
+    [SerializeField] AudioSource audioShoot;
+    [SerializeField] AudioSource audioWalk;
+
+
     void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("NPCshootTarget").transform;
@@ -81,9 +85,17 @@ public class NPCBehavior : MonoBehaviour
                         transform.Translate(directionToPlayer.normalized * navMeshAgent.speed * Time.deltaTime, Space.World);
                         Debug.Log("switching to smooth brain");
                     }
+                    if (audioWalk.isPlaying) 
+                    {
+                    }
+                    else 
+                    {
+                        audioWalk.Play();
+                    }
                 }
                 else
                 {
+                    audioWalk.Stop();
                     lookAtPlayer();
                     if (Time.time > lastShootTime + shootingCooldown)
                     {
@@ -91,6 +103,7 @@ public class NPCBehavior : MonoBehaviour
                         navMeshAgent.isStopped = true;
                         Shoot();
                         lastShootTime = Time.time;
+                        audioShoot.Play();
                         Debug.Log("enemy is shooting at player");
                     }
                 }

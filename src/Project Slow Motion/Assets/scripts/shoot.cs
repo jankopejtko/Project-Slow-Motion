@@ -17,6 +17,7 @@ public class shoot : MonoBehaviour
     public int BulletNumber { get => bulletNumber; }
 
     [SerializeField] private float range;
+    [SerializeField] private AudioSource audio;
 
     private void Start()
     {
@@ -42,6 +43,7 @@ public class shoot : MonoBehaviour
                 GameObject bullet = Instantiate(bullet_prefab, bulletSpawnPoint.transform.position, bulletSpawnPoint.transform.rotation);
                 bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * bulletSpeed);
             }
+            audio.Play();
         }
     }
     private void OnDrawGizmos()
